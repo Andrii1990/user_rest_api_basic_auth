@@ -22,13 +22,13 @@ public class SearchService {
 
     public List<User> findUserFromArticleColor(String search) {
 
-        return jdbcTemplate.query("SELECT * FROM USERS INNER JOIN ARTICLES ON USERS.ID = ARTICLES.USER_ID where COLOR = '" + search + "';", new BeanPropertyRowMapper<>(User.class));
+        return jdbcTemplate.query("SELECT * FROM USERS INNER JOIN ARTICLES ON USERS.ID = ARTICLES.USER_ID where COLOR = ?;", new BeanPropertyRowMapper<>(User.class), search);
 
     }
 
     public List<User> findUserFromArticleArticleCount(String search) {
 
-        return jdbcTemplate.query("SELECT * FROM USERS WHERE id IN ( SELECT user_id FROM ARTICLES GROUP BY USER_ID HAVING COUNT(*) > " + search + ")", new BeanPropertyRowMapper<>(User.class));
+        return jdbcTemplate.query("SELECT * FROM USERS WHERE id IN ( SELECT user_id FROM ARTICLES GROUP BY USER_ID HAVING COUNT(*) > ?)", new BeanPropertyRowMapper<>(User.class), search);
 
     }
 

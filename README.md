@@ -1,36 +1,50 @@
 ## Starting the application
-
-1 .Run the following command: `./gradlew bootJar`
-2. This will create a single fat jar which can be executed
-   with `java -jar build/libs/payment-service-0.0.1-SNAPSHOT.jar`
+   `mvn package`
+This will create a single fat jar which can be executed
+   with `java -jar target/tech1-0.0.1-SNAPSHOT.jar`
+Note:
+   the database will be deployed automatically and filled with test data
 
 ## Using the REST API
 
-### Swagger Documentation
+Please import tech1.postman_collection.json file to your Postman
 
-`http://localhost:8080/swagger-ui.html`
+### Basic Auth
+Basic auth "key": "x-csrf-token",
+Basic auth "value" you can get using "get auth" request
 
-### Clients
 
-#### Create a client with accounts
+### Users
 
-`curl -X POST "http://localhost:8080/api/clients" -H  "accept: application/json" -H  "Content-Type: application/json" -d "{\"first_name\":\"string\",\"last_name\":\"string\",\"accounts\":[{\"balance\":0,\"account_num\":\"string\",\"account_type\":\"card\"}]}"`
-.
+#### Create  user
 
-#### Get client accounts
+you can create new user use "save user" request
 
-`curl -X GET "http://localhost:8080/api/clients/1/get_accounts" -H  "accept: application/xml"`
+#### Get  users
 
-### Payments
+you can get all users use "find all user"  request
 
-#### Create payment
+#### Get  users (with parameters)
 
-`curl -X POST "http://localhost:8080/api/payments" -H  "accept: application/json" -H  "Content-Type: application/json" -d "{\"amount\":0,\"reason\":\"string\",\"source_acc_id\":0,\"dest_acc_id\":0}"`
+you can get all users with different parameter use "user search"  request
+f.e.
+/users/search?articles=3 get all users which have more than 3 articles
+/users/search?color=red get all users which have article with red color
 
-#### Create bulk payments
+/users/search?search=age>28 get all users over 28 years old
+/users/search?search=age<28 get all users under 28 years old
+/users/search?search=age:28 get all users who are 28 years old
 
-`curl -X POST "http://localhost:8080/api/payments/bulk_create" -H  "accept: application/xml" -H  "Content-Type: application/json" -d "[{\"amount\":0,\"reason\":\"string\",\"source_acc_id\":0,\"dest_acc_id\":0}]"`
+/users/search?search=name:James get all users named James
 
-#### Find payments for dynamic parameters
+#### Delete user
+you can delete user use "delete user" request
 
-`curl -X POST "http://localhost:8080/api/payments/find_by_criteria" -H  "accept: application/xml" -H  "Content-Type: application/json" -d "{\"payer_id\":0,\"recipient_id\":0,\"source_acc_id\":0,\"dest_acc_id\":0}"`
+### Articles
+
+#### Create  article
+you can create new article  use "save article" request
+
+#### Get  articles
+you can get all articles  use "get all article" request
+
