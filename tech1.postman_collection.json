@@ -1,0 +1,280 @@
+{
+	"info": {
+		"_postman_id": "7dfc239a-6e2d-49ce-a1ba-2ed5df9f9c07",
+		"name": "tech1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "without authorization",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8087/users/findAll",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8087",
+					"path": [
+						"users",
+						"findAll"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get auth unregistered user",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "1221212",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "wrong_user_name",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8087/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8087",
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get auth",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "23234",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "Bill32",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8087/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8087",
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "find all user",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-csrf-token",
+						"value": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIyYjcwYmE3ZTViMWI0MWM4YjkzNmE1M2ViYjcwM2IzOSIsImlhdCI6MTYzMTY4MzI0NiwibmJmIjoxNjMxNjgzMjQ2LCJleHAiOjE2MzE2ODUwNDZ9.7n7V5_AsIloU4jWy-rWJVcsTLMHr7o8shD4CeguJwNs",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8087/users/findAll",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8087",
+					"path": [
+						"users",
+						"findAll"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "save user",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-csrf-token",
+						"value": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI5NjA1MTE1Y2QwZjk0NTM5ODkzYjg2NDlkYzFiOGI3NiIsImlhdCI6MTYzMTQ3NTE0NCwibmJmIjoxNjMxNDc1MTQ0LCJleHAiOjE2MzE0NzY5NDR9.uw-B3q3kV9I6slKr6E0scloyPTc2h5k4-PL85LJ1zM4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"new user\",\n    \"age\":33,\n    \"login\": \"user33\",\n    \"password\" : \"user123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8087/users/save",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8087",
+					"path": [
+						"users",
+						"save"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete user",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-csrf-token",
+						"value": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJmNzUwNWQ3M2ExMDc0OTk0OTBkMmVjNWVjNzA4NmQxNyIsImlhdCI6MTYzMTU2MTUyMCwibmJmIjoxNjMxNTYxNTIwLCJleHAiOjE2MzE1NjMzMjB9.nL4i44jT4lo0Mga6_CLu6INwkgWp89tq8sogrICw-Ck",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8087/users/delete/9",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8087",
+					"path": [
+						"users",
+						"delete",
+						"9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "save article",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-csrf-token",
+						"value": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI0MjkwZGQ3YzllYzY0YjFmYjg1ZmZlNWU5NGFlNjZlNiIsImlhdCI6MTYzMTYzMDg4NSwibmJmIjoxNjMxNjMwODg1LCJleHAiOjE2MzE2MzI2ODV9.BtN2qUP29cQ4KsWbyotjXaSZhlV2fD9jd8p7Rlb1jzE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userId\": 2,\n    \"text\": \"2343242Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\",\n    \"color\": \"RED\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8087/articles/save",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8087",
+					"path": [
+						"articles",
+						"save"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all article",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-csrf-token",
+						"value": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI0MjkwZGQ3YzllYzY0YjFmYjg1ZmZlNWU5NGFlNjZlNiIsImlhdCI6MTYzMTYzMDg4NSwibmJmIjoxNjMxNjMwODg1LCJleHAiOjE2MzE2MzI2ODV9.BtN2qUP29cQ4KsWbyotjXaSZhlV2fD9jd8p7Rlb1jzE",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8087/articles/findAll",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8087",
+					"path": [
+						"articles",
+						"findAll"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user search",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-csrf-token",
+						"value": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIyYjcwYmE3ZTViMWI0MWM4YjkzNmE1M2ViYjcwM2IzOSIsImlhdCI6MTYzMTY4MzI0NiwibmJmIjoxNjMxNjgzMjQ2LCJleHAiOjE2MzE2ODUwNDZ9.7n7V5_AsIloU4jWy-rWJVcsTLMHr7o8shD4CeguJwNs",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8087/users/search?articles=3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8087",
+					"path": [
+						"users",
+						"search"
+					],
+					"query": [
+						{
+							"key": "articles",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
