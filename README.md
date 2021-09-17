@@ -36,7 +36,6 @@ f.e.
 /users/search?search=age:28 get all users who are 28 years old
 
 /users/search?search=name:James get all users named James
-
 #### Delete user
 you can delete user use "delete user" request
 
